@@ -1,6 +1,8 @@
 # pymon-game
 ALUNA: Angel Ledebrum Granville
+
 Ciência da Computação 2021/01 - IMED
+
 EMAIL: endhygranville@gmail.com
 
 DESCRIÇÃO:
