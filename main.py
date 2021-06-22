@@ -1,21 +1,20 @@
 import pygame
+import random
 
-# ----------------
-# bota sort letra pega as letra var img
-# ----------------
 pygame.init()
 
 # tamanho tela
-largura = 1024
-altura = 646
-tela = pygame.display.set_mode((largura, altura))
+largura_tela = 1024
+altura_tela = 646
+tela = pygame.display.set_mode((largura_tela, altura_tela))
 fps = pygame.time.Clock()
 
-# ---CORES--VARS
 background = pygame.image.load("assets/fundo-2.png")
+
+#---MOSTRA PIKACHU
 boneco_pikachu = pygame.image.load("assets/pikachu-boneco.png")
-posicaoX = largura * 0.50
-posicaoY = altura * 0.77
+posicao_x_pikachu = largura_tela * 0.50
+posicao_y_pikachu = altura_tela * 0.77
 movimentoX = 0
 
 # ------VARS ALFA
@@ -28,23 +27,40 @@ letra_u = pygame.image.load("assets/vogais/u.png")
 #-------A---------
 largura_a = 80
 altura_a = 88
-xA = largura * 0.45
+xA = largura_tela * 0.45
 yA = -220
 velocidadeA = 3
 
 #----------E
 largura_e = 80
 altura_e = 95
-xE = largura * 0.05
+xE = largura_tela * 0.05
 yE = -100
 velocidadeE = 3
+
 #----------I
+largura_i = 80
+altura_i = 83
+xI = largura_tela * 0.20
+yI = -245
+velocidadeI = 3
+
 #----------O
+largura_o = 80
+altura_o = 86
+xO = largura_tela * 0.80
+yO = -80
+velocidadeO = 3
+
 #----------U
+largura_u = 80
+altura_u = 73
+xU = largura_tela * 0.60
+yU = -180
+velocidadeU = 3
 
 
 while True:
-    # interação do user
     for evento in pygame.event.get():  # evento get mostra na tela
         if evento.type == pygame.QUIT:
             pygame.quit()
@@ -59,37 +75,58 @@ while True:
         if evento.type == pygame.KEYUP:
             movimentoX = 0
 
-    # ------FUNDO
+    #------FUNDO
     tela.blit(background, (0, 0))
 
     # ------IMPEDE DE PASSAR DA PAREDE
-    posicaoX = posicaoX + movimentoX
-    if posicaoX < 0:
-        posicaoX = 0
-    elif posicaoX > 880:
-        posicaoX = 880
+    posicao_x_pikachu = posicao_x_pikachu + movimentoX
+    if posicao_x_pikachu < 0:
+        posicao_x_pikachu = 0
+    elif posicao_x_pikachu > 880:
+        posicao_x_pikachu = 880
 
     # ------POSIÇÃO DO PIKACHU
-    tela.blit(boneco_pikachu, (posicaoX, posicaoY))
+    tela.blit(boneco_pikachu, (posicao_x_pikachu, posicao_y_pikachu))
 
     # --------------,MOVIMENTAÇÃO A
     tela.blit(letra_a, (xA, yA))
     yA = yA + velocidadeA
-    if yA > altura:
+    if yA > altura_tela:
         yA = -200
-        velocidadeA += 2
+        velocidadeA += 0.09
+        xA = random.randrange(0, largura_tela)
 
     #----------------MOVIMENTAÇÃO E
     tela.blit(letra_e, (xE, yE))
     yE = yE + velocidadeE
-    if yE > altura:
+    if yE > altura_tela:
         yE = -200
-        velocidadeE += 1
+        velocidadeE += 0.09
+        xE = random.randrange(0, largura_tela)
 
-    #------------------movimentação i
-    tela.blit(letra_i, (400, 0))
-    tela.blit(letra_o, (600, 0))
-    tela.blit(letra_u, (800, 0))
+    #------------------movimentação I
+    tela.blit(letra_i, (xI, yI))
+    yI = yI + velocidadeI
+    if yI > altura_tela:
+        yI = -200
+        velocidadeI += 0.09
+        xI = random.randrange(0, largura_tela)
+
+    #-----------------MOVIMENTAÇÃO O
+    tela.blit(letra_o, (xO, yO))
+    yO = yO + velocidadeO
+    if yO > altura_tela:
+        yO = -200
+        velocidadeO += 0.09
+        xO = random.randrange(0, largura_tela)
+
+    #-----------------MOVIMENTAÇÃO U
+    tela.blit(letra_u, (xU, yU))
+    yU = yU + velocidadeU
+    if yU > altura_tela:
+        yU = -200
+        velocidadeE += 0.09
+        xU = random.randrange(0, largura_tela)
 
     # atualiza tela
     pygame.display.update()
