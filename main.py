@@ -2,6 +2,12 @@ import pygame
 import random
 
 pygame.init()
+icone = pygame.image.load("assets/pikachu-icon.ico")
+pygame.display.set_icon(icone)
+pygame.display.set_caption("PyMon")
+
+
+arrayPala = ["lala", "lele"]
 
 # tamanho tela
 largura_tela = 1024
@@ -9,7 +15,7 @@ altura_tela = 646
 tela = pygame.display.set_mode((largura_tela, altura_tela))
 fps = pygame.time.Clock()
 
-background = pygame.image.load("assets/fundo-2.png")
+background = pygame.image.load("assets/fundo-1.png")
 
 #---MOSTRA PIKACHU
 boneco_pikachu = pygame.image.load("assets/pikachu-boneco.png")
@@ -108,7 +114,7 @@ while True:
     tela.blit(letra_i, (xI, yI))
     yI = yI + velocidadeI
     if yI > altura_tela:
-        yI = -200
+        yI = -10
         velocidadeI += 0.09
         xI = random.randrange(0, largura_tela)
 
@@ -118,13 +124,13 @@ while True:
     if yO > altura_tela:
         yO = -200
         velocidadeO += 0.09
-        xO = random.randrange(0, largura_tela)
+        xO = random.randrange(0, largura_tela-50)
 
     #-----------------MOVIMENTAÇÃO U
     tela.blit(letra_u, (xU, yU))
     yU = yU + velocidadeU
     if yU > altura_tela:
-        yU = -200
+        yU = -300
         velocidadeE += 0.09
         xU = random.randrange(0, largura_tela)
 
