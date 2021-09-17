@@ -4,14 +4,15 @@ import time
 
 pygame.init()
 colisao = pygame.mixer.Sound("assets/colisao-pymon.wav")
-icone = pygame.image.load("assets/pikachu-icon.ico")
+icone   = pygame.image.load("assets/pikachu-icon.ico")
 pygame.display.set_icon(icone)
 pygame.display.set_caption("PyMon")
 
 largura_tela = 1024
-altura_tela = 646
+altura_tela  = 646
+
 tela = pygame.display.set_mode((largura_tela, altura_tela))
-fps = pygame.time.Clock()
+fps  = pygame.time.Clock()
 
 background = pygame.image.load("assets/fundo-1.png")
 
@@ -34,18 +35,18 @@ def dead(letra):
     alert_tela("A vogal " + letra + " atingiu você!!!")
 
 def placar(desvios):
-    font = pygame.font.SysFont(None, 25)
+    font  = pygame.font.SysFont(None, 25)
     texto = font.render("Desvios:"+str(desvios), True, (1,1,1))
     tela.blit(texto, (0, 0))
 
 def playGame():
     pygame.mixer.music.load('assets/trilha-sonora-pymon.mp3')
     pygame.mixer.music.play(-1)
-    boneco_pikachu = pygame.image.load("assets/pikachu-boneco.png")
+    boneco_pikachu    = pygame.image.load("assets/pikachu-boneco.png")
     posicao_x_pikachu = largura_tela * 0.50
     posicao_y_pikachu = altura_tela * 0.77
-    pikachu_largura = 140
-    movimentoX = 0
+    pikachu_largura   = 140
+    movimentoX        = 0
 
     letra_a = pygame.image.load("assets/vogais/a.png")
     letra_e = pygame.image.load("assets/vogais/e.png")
@@ -53,34 +54,34 @@ def playGame():
     letra_o = pygame.image.load("assets/vogais/o.png")
     letra_u = pygame.image.load("assets/vogais/u.png")
 
-    largura_a = 57
-    altura_a = 65
-    xA = largura_tela * 0.45
-    yA = -220
+    largura_a   = 57
+    altura_a    = 65
+    xA          = largura_tela * 0.45
+    yA          = -220
     velocidadeA = 3
 
-    largura_e = 41
-    altura_e = 68
-    xE = largura_tela * 0.02
-    yE = -100
+    largura_e   = 41
+    altura_e    = 68
+    xE          = largura_tela * 0.02
+    yE          = -100
     velocidadeE = 3
 
-    largura_i = 18
-    altura_i = 68
-    xI = largura_tela * 0.20
-    yI = -245
+    largura_i   = 18
+    altura_i    = 68
+    xI          = largura_tela * 0.20
+    yI          = -245
     velocidadeI = 3
 
-    largura_o = 65
-    altura_o = 69
-    xO = largura_tela * 0.80
-    yO = -80
+    largura_o   = 65
+    altura_o    = 69
+    xO          = largura_tela * 0.80
+    yO          = -80
     velocidadeO = 3
 
-    largura_u = 51
-    altura_u = 61
-    xU = largura_tela * 0.65
-    yU = -180
+    largura_u   = 51
+    altura_u    = 61
+    xU          = largura_tela * 0.65
+    yU          = -180
     velocidadeU = 3
 
     desvios = 0
@@ -112,42 +113,45 @@ def playGame():
         tela.blit(letra_a, (xA, yA))
         yA = yA + velocidadeA
         if yA > altura_tela:
-            yA = -200
+            yA           = -200
             velocidadeA += 0.09
-            xA = random.randrange(0, largura_tela)
-            desvios += 1
+            xA           = random.randrange(0, largura_tela)
+            desvios     += 1
 
         tela.blit(letra_e, (xE, yE))
         yE = yE + velocidadeE
         if yE > altura_tela:
-            yE = -200
+            yE           = -200
             velocidadeE += 0.09
-            xE = random.randrange(0, largura_tela)
-            desvios += 1
+            xE           = random.randrange(0, largura_tela)
+            desvios     += 1
 
         tela.blit(letra_i, (xI, yI))
+        
         yI = yI + velocidadeI
         if yI > altura_tela:
-            yI = -10
+            yI           = -10
             velocidadeI += 0.09
-            xI = random.randrange(0, largura_tela)
-            desvios += 1
+            xI           = random.randrange(0, largura_tela)
+            desvios     += 1
 
         tela.blit(letra_o, (xO, yO))
+        
         yO = yO + velocidadeO
         if yO > altura_tela:
-            yO = -200
+            yO           = -200
             velocidadeO += 0.09
-            xO = random.randrange(0, largura_tela - 50)
-            desvios += 1
+            xO           = random.randrange(0, largura_tela - 50)
+            desvios     += 1
 
         tela.blit(letra_u, (xU, yU))
+        
         yU = yU + velocidadeU
         if yU > altura_tela:
-            yU = -300
+            yU           = -300
             velocidadeE += 0.09
-            xU = random.randrange(0, largura_tela)
-            desvios += 1
+            xU           = random.randrange(0, largura_tela)
+            desvios     += 1
 
         if posicao_y_pikachu < yA + altura_a:
             if posicao_x_pikachu < xA and posicao_x_pikachu + pikachu_largura > xA or xA + largura_a > posicao_x_pikachu and xA + largura_a < posicao_x_pikachu + pikachu_largura:
